@@ -2,7 +2,7 @@ import mysql.connector
 global cnx
 
 cnx = mysql.connector.connect(
-    host="mysql.railway.internal",
+    host="mysql://root:YEawvnBHsSXlObTRTewWIoolGriRsjUd@turntable.proxy.rlwy.net:59272/railway",
     user="root",
     password="YEawvnBHsSXlObTRTewWIoolGriRsjUd",
     database="railway",
