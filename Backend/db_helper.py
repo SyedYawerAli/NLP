@@ -5,7 +5,7 @@ cnx = mysql.connector.connect(
     host="mysql.railway.internal",
     user="root",
     password="YEawvnBHsSXlObTRTewWIoolGriRsjUd",
-    database="railway"
+    database="railway",
     port = 3306
 )
 
