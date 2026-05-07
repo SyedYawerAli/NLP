@@ -1,17 +1,19 @@
 import mysql.connector
 global cnx
 
-cnx = mysql.connector.connect(
-    host="turntable.proxy.rlwy.net",
-    user="root",
-    password="YEawvnBHsSXlObTRTewWIoolGriRsjUd",
-    database="railway",
-    port=59272
-)
+def get_connection():
+    return mysql.connector.connect(
+        host="turntable.proxy.rlwy.net",
+        user="root",
+        password="YOUR_PASSWORD",
+        database="railway",
+        port=59272
+    )
 
 # Function to call the MySQL stored procedure and insert an order item
 def insert_order_item(food_item, quantity, order_id):
     try:
+        cnx = get_connection()
         cursor = cnx.cursor()
 
         # Calling the stored procedure
@@ -44,6 +46,7 @@ def insert_order_item(food_item, quantity, order_id):
 
 # Function to insert a record into the order_tracking table
 def insert_order_tracking(order_id, status):
+    cnx = get_connection()
     cursor = cnx.cursor()
 
     # Inserting the record into the order_tracking table
@@ -57,6 +60,7 @@ def insert_order_tracking(order_id, status):
     cursor.close()
 
 def get_total_order_price(order_id):
+    cnx = get_connection()
     cursor = cnx.cursor()
 
     # Executing the SQL query to get the total order price
@@ -73,6 +77,7 @@ def get_total_order_price(order_id):
 
 # Function to get the next available order_id
 def get_next_order_id():
+    cnx = get_connection()
     cursor = cnx.cursor()
 
     # Executing the SQL query to get the next available order_id
@@ -93,6 +98,7 @@ def get_next_order_id():
 
 # Function to fetch the order status from the order_tracking table
 def get_order_status(order_id):
+    cnx = get_connection()
     cursor = cnx.cursor()
 
     # Executing the SQL query to fetch the order status
